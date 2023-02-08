@@ -152,8 +152,25 @@ class HarrysLinkedList:
                 currentNode = currentNode.nextNode
                 stepCount += 1
             
+    def search(self, key) -> bool:
+        currentNode = self.head
 
+        while currentNode != None:
+            if currentNode.data == key:
+                return True
+            else:
+                currentNode = currentNode.nextNode
+        return False
 
+    def searchIndex(self, key) -> any:
+        currentNode = self.head
+        stepCount = 0
 
-
+        while currentNode != None:
+            if currentNode.data == key:
+                return stepCount
+            else:
+                stepCount += 1
+                currentNode = currentNode.nextNode
+        return None
 #the end
