@@ -8,6 +8,8 @@ alist.appendItem("pear")
 
 print(alist)
 print(alist.size())
-alist.removeItem(2)
+
+alist.insertItem("pineapple", 4)
+
 print(alist)
 print(alist.size())

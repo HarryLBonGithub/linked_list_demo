@@ -119,6 +119,41 @@ class HarrysLinkedList:
                 stepCount += 1
 
     def insertItem(self, data, index: int) -> None:
-        pass
+        """
+        Adds a node with the given data at the given index
+        """
+
+        newNode = LinkedListNode(data)
+        stepCount = 0
+        currentNode = self.head
+
+        if index == self.size():
+            self.appendItem(data)
+            return
+
+        while stepCount < self.size():
+            if stepCount == index:
+                prvNode = currentNode.previousNode
+                nxtNode = currentNode.nextNode
+
+                newNode.nextNode = currentNode
+                
+                if prvNode == None:
+                    self.head = newNode
+                else:
+                    prvNode.nextNode = newNode
+                newNode.previousNode = prvNode
+
+                
+
+                self.count += 1
+                return
+            else:
+                currentNode = currentNode.nextNode
+                stepCount += 1
+            
+
+
+
 
 #the end
