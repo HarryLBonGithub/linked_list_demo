@@ -23,8 +23,11 @@ class HarrysLinkedList:
     tail = None
     count : int = 0
 
-    def __init__(self) -> None:
+    def __init__(self, *data) -> None:
         self.head = None
+
+        for items in data:
+            self.appendItem(items)
     
     def __repr__(self) -> str:
         nodes = []
@@ -50,22 +53,24 @@ class HarrysLinkedList:
     def size(self) -> int:
         return int(self.count)
     
-    def appendItem(self, data) -> None:
+    def appendItem(self, *data) -> None:
         """
         Adds an item to the end of the list
         Increases the size by 1
         """
-        newNode = LinkedListNode(data)
-        if self.count == 0:
-            self.head = newNode
-            self.tail = newNode
-            self.count += 1
-        else:
-            newNode.previousNode = self.tail
-            oldTail = self.tail
-            oldTail.nextNode = newNode
-            self.tail = newNode
-            self.count += 1
+        for item in data:
+
+            newNode = LinkedListNode(item)
+            if self.count == 0:
+                self.head = newNode
+                self.tail = newNode
+                self.count += 1
+            else:
+                newNode.previousNode = self.tail
+                oldTail = self.tail
+                oldTail.nextNode = newNode
+                self.tail = newNode
+                self.count += 1
 
     def prependItem(self, data) -> None:
         """
@@ -173,4 +178,22 @@ class HarrysLinkedList:
                 stepCount += 1
                 currentNode = currentNode.nextNode
         return None
+
+    def searchNodeByIndex(self, index) -> LinkedListNode:
+        currentNode = self.head
+        stepCount = 0
+
+        while currentNode != None:
+            if stepCount == index:
+                return currentNode
+            else:
+                currentNode = currentNode.nextNode
+                stepCount += 1
+        return None
+
+    def toList(self) -> list:
+        """
+        Returns a python list with the same contents
+        """
+
 #the end
